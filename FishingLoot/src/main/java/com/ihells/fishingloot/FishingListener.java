@@ -23,7 +23,7 @@ public class FishingListener implements Listener {
 
     public YamlConfiguration mainConfig = FishingLoot.getInstance().getMainConfig().getConfiguration();
 
-    @EventHandler (priority = EventPriority.MONITOR)
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onFish(PlayerFishEvent e) {
 
         // captcha
@@ -54,11 +54,11 @@ public class FishingListener implements Listener {
 
             if (lootUtil.isHighValue(entrySet.getKey())) {
                 if (getLoot(player.getItemInHand()) == 1) {
-                    randomLoot.add(entrySet.getValue()*1.1, entrySet.getKey());
+                    randomLoot.add(entrySet.getValue() * 1.1, entrySet.getKey());
                 } else if (getLoot(player.getItemInHand()) == 2) {
-                    randomLoot.add(entrySet.getValue()*1.2, entrySet.getKey());
+                    randomLoot.add(entrySet.getValue() * 1.2, entrySet.getKey());
                 } else if (getLoot(player.getItemInHand()) == 3) {
-                    randomLoot.add(entrySet.getValue()*1.3, entrySet.getKey());
+                    randomLoot.add(entrySet.getValue() * 1.3, entrySet.getKey());
                 } else {
                     randomLoot.add(entrySet.getValue(), entrySet.getKey());
                 }
@@ -72,14 +72,15 @@ public class FishingListener implements Listener {
     }
 
     private int getLoot(ItemStack item) {
-        String enchant = null;
-        List<String> lore = item.getItemMeta().getLore();
-        for (String line : lore) {
-            if (line.contains(colour("&bLoot"))) {
-                enchant = line;
-            }
-        }
         try {
+            String enchant = null;
+            List<String> lore = item.getItemMeta().getLore();
+            for (String line : lore) {
+                if (line.contains(colour("&bLoot"))) {
+                    enchant = line;
+                }
+            }
+
             String level = enchant.split(" ")[1];
             if (level.equals(colour("&bI"))) {
                 return 1;
@@ -88,7 +89,7 @@ public class FishingListener implements Listener {
             } else {
                 return 3;
             }
-        } catch (NullPointerException npe) {
+        } catch (NullPointerException e) {
             return 0;
         }
     }

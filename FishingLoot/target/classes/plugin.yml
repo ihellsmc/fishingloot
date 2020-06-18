@@ -6,3 +6,6 @@ commands:
   upgrade:
     aliases: [u]
     description: "Upgrade your current fishing rod!"
+softdepend:
+  - Vault
+  - TokenManager

@@ -70,7 +70,7 @@ public class InventoryListener implements Listener {
                     Economy economy = FishingLoot.getInstance().getEconomy();
                     double bal = economy.getBalance(player);
 
-                    if (bal > cost) {
+                    if (bal >= cost) {
                         FishingLoot.getInstance().getUpgradeUtil().upgradeFishingRod(player, 1);
                     } else {
                         player.sendMessage(colour(mainConfig.getString("no-funds")));
@@ -95,7 +95,7 @@ public class InventoryListener implements Listener {
                         Economy economy = FishingLoot.getInstance().getEconomy();
                         double bal = economy.getBalance(player);
 
-                        if (bal > cost) {
+                        if (bal >= cost) {
                             FishingLoot.getInstance().getUpgradeUtil().upgradeFishingRod(player, 2);
                         } else {
                             player.sendMessage(colour(mainConfig.getString("no-funds")));
@@ -130,7 +130,7 @@ public class InventoryListener implements Listener {
                         Economy economy = FishingLoot.getInstance().getEconomy();
                         double bal = economy.getBalance(player);
 
-                        if (bal > cost) {
+                        if (bal >= cost) {
                             FishingLoot.getInstance().getUpgradeUtil().upgradeFishingRod(player, 3);
                         } else {
                             player.sendMessage(colour(mainConfig.getString("no-funds")));
