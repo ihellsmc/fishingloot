@@ -72,6 +72,7 @@ public class InventoryListener implements Listener {
 
                     if (bal >= cost) {
                         FishingLoot.getInstance().getUpgradeUtil().upgradeFishingRod(player, 1);
+                        economy.withdrawPlayer(player, cost);
                     } else {
                         player.sendMessage(colour(mainConfig.getString("no-funds")));
                     }
@@ -97,6 +98,7 @@ public class InventoryListener implements Listener {
 
                         if (bal >= cost) {
                             FishingLoot.getInstance().getUpgradeUtil().upgradeFishingRod(player, 2);
+                            economy.withdrawPlayer(player, cost);
                         } else {
                             player.sendMessage(colour(mainConfig.getString("no-funds")));
                         }
@@ -132,6 +134,7 @@ public class InventoryListener implements Listener {
 
                         if (bal >= cost) {
                             FishingLoot.getInstance().getUpgradeUtil().upgradeFishingRod(player, 3);
+                            economy.withdrawPlayer(player, cost);
                         } else {
                             player.sendMessage(colour(mainConfig.getString("no-funds")));
                         }
