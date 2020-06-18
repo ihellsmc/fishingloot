@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -72,12 +71,13 @@ public class InventoryListener implements Listener {
                     if (bal >= cost) {
                         FishingLoot.getInstance().getUpgradeUtil().upgradeFishingRod(player, 1);
                         economy.withdrawPlayer(player, cost);
+                        FishingLoot.getInstance().getUpgradeGUI().applyUpgradeGUI(player);
                     } else {
                         player.sendMessage(colour(mainConfig.getString("no-funds")));
+                        player.closeInventory();
                     }
 
                     e.setCancelled(true);
-                    player.closeInventory();
 
                 } else if (e.getCurrentItem().getItemMeta().getDisplayName().equals(colour(mainConfig.getString("gui.upgrades.tier-2.name")))) {
                     if (getTier(player.getItemInHand().getItemMeta().getDisplayName()) == 0) {
@@ -98,13 +98,13 @@ public class InventoryListener implements Listener {
                         if (bal >= cost) {
                             FishingLoot.getInstance().getUpgradeUtil().upgradeFishingRod(player, 2);
                             economy.withdrawPlayer(player, cost);
+                            FishingLoot.getInstance().getUpgradeGUI().applyUpgradeGUI(player);
                         } else {
                             player.sendMessage(colour(mainConfig.getString("no-funds")));
+                            player.closeInventory();
                         }
 
                         e.setCancelled(true);
-                        player.closeInventory();
-
                     }
                 } else {
                     if (getTier(player.getItemInHand().getItemMeta().getDisplayName()) == 0) {
@@ -134,12 +134,13 @@ public class InventoryListener implements Listener {
                         if (bal >= cost) {
                             FishingLoot.getInstance().getUpgradeUtil().upgradeFishingRod(player, 3);
                             economy.withdrawPlayer(player, cost);
+                            FishingLoot.getInstance().getUpgradeGUI().applyUpgradeGUI(player);
                         } else {
                             player.sendMessage(colour(mainConfig.getString("no-funds")));
+                            player.closeInventory();
                         }
 
                         e.setCancelled(true);
-                        player.closeInventory();
 
                     }
                 }

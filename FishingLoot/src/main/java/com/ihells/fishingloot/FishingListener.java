@@ -27,8 +27,8 @@ public class FishingListener implements Listener {
     public void onFish(PlayerFishEvent e) {
 
         // captcha
-        int rand = new Random().nextInt(20);
-        if (rand == 1) { // 5% chance
+        int rand = new Random().nextInt(50);
+        if (rand == 1) { // 2% chance
             FishingLoot.getInstance().getCaptchaGUI().applyCaptchaGUI(e.getPlayer());
         }
 
@@ -36,11 +36,21 @@ public class FishingListener implements Listener {
             Item item = (Item) e.getCaught();
             item.setItemStack(getRandomDrop(e.getPlayer()));
 
-            long tokens = mainConfig.getInt("tokens-on-success");
+            long tokens;
+            if (mainConfig.getConfigurationSection("loot.high-value").getKeys(false).contains(item.getItemStack().getType().toString())) {
+                tokens = mainConfig.getInt("tokens-on-high-value");
+            } else {
+                tokens = mainConfig.getInt("tokens-on-low-value");
+            }
+
+            if (tokens > 1) {
+                e.getPlayer().sendMessage(colour(mainConfig.getString("on-token").replace("{tokens}", Long.toString(tokens))
+                        .replace("Token", "Tokens")));
+            } else {
+                e.getPlayer().sendMessage(colour(mainConfig.getString("on-token").replace("{tokens}", Long.toString(tokens))));
+            }
 
             FishingLoot.getInstance().getTokenManager().addTokens(e.getPlayer(), tokens);
-
-            e.getPlayer().sendMessage(colour(mainConfig.getString("on-token")));
 
         }
 
@@ -54,11 +64,11 @@ public class FishingListener implements Listener {
 
             if (lootUtil.isHighValue(entrySet.getKey())) {
                 if (getLoot(player.getItemInHand()) == 1) {
-                    randomLoot.add(entrySet.getValue() * 1.1, entrySet.getKey());
+                    randomLoot.add(entrySet.getValue() * 1.15, entrySet.getKey());
                 } else if (getLoot(player.getItemInHand()) == 2) {
-                    randomLoot.add(entrySet.getValue() * 1.2, entrySet.getKey());
-                } else if (getLoot(player.getItemInHand()) == 3) {
                     randomLoot.add(entrySet.getValue() * 1.3, entrySet.getKey());
+                } else if (getLoot(player.getItemInHand()) == 3) {
+                    randomLoot.add(entrySet.getValue() * 1.45, entrySet.getKey());
                 } else {
                     randomLoot.add(entrySet.getValue(), entrySet.getKey());
                 }

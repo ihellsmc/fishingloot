@@ -1,8 +1,9 @@
 rod-name: "&aFishing Rod &7(Tier {tier})"
 to-check: "&aFishing Rod" ## KEEP AS THIS NAME ^^ WITHOUT THE TIER
 
-tokens-on-success: 1
-on-token: "&6&l+1 Token"
+tokens-on-high-value: 3
+tokens-on-low-value: 1
+on-token: "&6&l⛁ &e{tokens} Token"
 on-purchase: "&aYou just purchased a tier {tier} upgrade for ${cost}!"
 
 no-permission: "&c&lHey! &cSorry, you do not have permission to do this!"
