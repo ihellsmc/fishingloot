@@ -1,0 +1,79 @@
+rod-name: "&aFishing Rod &7(Tier {tier})"
+to-check: "&aFishing Rod" ## KEEP AS THIS NAME ^^ WITHOUT THE TIER
+
+tokens-on-success: 1
+on-token: "&6&l+1 Token"
+on-purchase: "&aYou just purchased a tier {tier} upgrade for ${cost}!"
+
+no-permission: "&c&lHey! &cSorry, you do not have permission to do this!"
+wrong-item: "&c&lHey! &cSorry, you must be holding a fishing rod to do this!"
+no-funds: "&c&lHey! &cSorry, you have insufficient funds to do this!"
+
+gui:
+  title: "&b&lSelect a tier to upgrade"
+  upgrades:
+    tier-1:
+      name: "&a&lTier 1 &fUpgrade"
+      lore:
+        - " "
+        - "&7Upgrade your fishing rod to &aTier 1"
+        - "&7Your fishing rod will now include:"
+        - " "
+        - " &7Unbreaking I"
+        - " &7Lure I"
+        - " &bLoot I"
+        - " "
+        - "&7This upgrade will cost &a$50k"
+        - "&7Left-click to apply this upgrade!"
+      enchants:
+        DURABILITY: 1
+        LURE: 1
+        LOOT: 1
+      cost: 50000
+    tier-2:
+      name: "&d&lTier 2 &fUpgrade"
+      lore:
+        - " "
+        - "&7Upgrade your fishing rod to &dTier 2"
+        - "&7Your fishing rod will now include:"
+        - " "
+        - " &7Unbreaking II"
+        - " &7Lure II"
+        - " &7Luck of the Sea I"
+        - " &bLoot II"
+        - " "
+        - "&7This upgrade will cost &a$150k"
+        - "&7Left-click to apply this upgrade!"
+      enchants:
+        DURABILITY: 2
+        LURE: 2
+        LUCK: 1
+        LOOT: 2
+      cost: 150000
+    tier-3:
+      name: "&c&lTier 3 &fUpgrade"
+      lore:
+        - " "
+        - "&7Upgrade your fishing rod to &cTier 3"
+        - "&7Your fishing rod will now include:"
+        - " "
+        - " &7Unbreaking III"
+        - " &7Lure III"
+        - " &7Luck of the Sea III"
+        - " &bLoot III"
+        - " "
+        - "&7This upgrade will cost &a$300k"
+        - "&7Left-click to apply this upgrade!"
+      enchants:
+        DURABILITY: 3
+        LURE: 3
+        LUCK: 3
+        LOOT: 3
+      cost: 300000
+
+loot: ## ITEM: "% chance"
+  high-value: ## The items that the "Loot" enchant should apply to
+    IRON_SWORD: "25.0"
+    DIAMOND: "25.0"
+  low-value:
+    STICK: "50.0"

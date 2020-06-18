@@ -1,0 +1,8 @@
+main: com.ihells.fishingloot.FishingLoot
+name: FishingLoot
+version: 1.0
+author: "iHells#7514"
+commands:
+  upgrade:
+    aliases: [u]
+    description: "Upgrade your current fishing rod!"

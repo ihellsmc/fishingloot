@@ -1,0 +1,11 @@
+com\ihells\fishingloot\InventoryListener.class
+com\ihells\fishingloot\FishingLoot.class
+com\ihells\fishingloot\FishingListener.class
+com\ihells\fishingloot\utils\LootUtil.class
+com\ihells\fishingloot\UpgradeCommand.class
+com\ihells\fishingloot\guis\CaptchaGUI.class
+com\ihells\fishingloot\guis\UpgradeGUI.class
+com\ihells\fishingloot\Loot.class
+com\ihells\fishingloot\utils\ItemBuilder.class
+com\ihells\fishingloot\utils\RandomCollection.class
+com\ihells\fishingloot\utils\UpgradeUtil.class
