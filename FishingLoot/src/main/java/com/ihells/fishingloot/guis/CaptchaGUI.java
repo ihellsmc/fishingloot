@@ -32,9 +32,6 @@ public class CaptchaGUI {
             }
         }
 
-        if (!FishingLoot.getInstance().inCaptcha.contains(player.getUniqueId())) {
-            FishingLoot.getInstance().inCaptcha.add(player.getUniqueId());
-        }
         player.openInventory(gui);
 
     }

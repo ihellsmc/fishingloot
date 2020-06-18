@@ -48,7 +48,6 @@ public class InventoryListener implements Listener {
             e.setCancelled(true);
             ItemStack green = new ItemBuilder(Material.STAINED_GLASS_PANE).name("&f").chatColor(ChatColor.GREEN).build();
             if (e.getCurrentItem().equals(green)) {
-                FishingLoot.getInstance().inCaptcha.remove(player.getUniqueId());
                 player.closeInventory();
             } else {
                 captchaGUI.applyCaptchaGUI(player);
@@ -185,14 +184,6 @@ public class InventoryListener implements Listener {
             return tierTwo;
         } else {
             return tierThree;
-        }
-    }
-
-    @EventHandler
-    public void onClose(InventoryCloseEvent e) {
-        Player player = (Player) e.getPlayer();
-        if (FishingLoot.getInstance().inCaptcha.contains(player.getUniqueId())) {
-            FishingLoot.getInstance().getCaptchaGUI().applyCaptchaGUI(player);
         }
     }
 

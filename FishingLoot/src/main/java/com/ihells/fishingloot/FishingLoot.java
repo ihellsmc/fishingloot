@@ -11,14 +11,10 @@ import me.realized.tokenmanager.api.TokenManager;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.entity.Fish;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 public class FishingLoot extends JavaPlugin {
 
@@ -32,8 +28,6 @@ public class FishingLoot extends JavaPlugin {
     @Getter public static FishingLoot instance;
     @Getter public Economy economy = null;
     @Getter public final TokenManager tokenManager = (TokenManager) Bukkit.getPluginManager().getPlugin("TokenManager");
-
-    public List<UUID> inCaptcha = new ArrayList<>();
 
     @Override
     public void onEnable() {
