@@ -5,16 +5,19 @@ import com.ihells.fishingloot.utils.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class CaptchaGUI {
+
+    public YamlConfiguration mainConfig = FishingLoot.getInstance().getMainConfig().getConfiguration();
 
     public void applyCaptchaGUI(Player player) {
 
@@ -33,6 +36,21 @@ public class CaptchaGUI {
         }
 
         player.openInventory(gui);
+
+        HashMap<UUID, BukkitTask> captchaTimer = FishingLoot.getInstance().getCaptchaTimer();
+        BukkitTask task = new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (Player target : Bukkit.getServer().getOnlinePlayers()) {
+                    if (target.hasPermission("captcha.alerts")) {
+                        target.sendMessage(colour(mainConfig.getString("captcha-alert").replace("{player}", player.getName())));
+                    }
+                }
+            }
+        }.runTaskLaterAsynchronously(FishingLoot.getInstance(), 5*60*20L);
+
+        captchaTimer.put(player.getUniqueId(), task);
+        FishingLoot.getInstance().setCaptchaTimer(captchaTimer);
 
     }
 

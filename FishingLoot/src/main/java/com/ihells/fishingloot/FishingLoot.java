@@ -2,6 +2,8 @@ package com.ihells.fishingloot;
 
 import com.ihells.fishingloot.guis.CaptchaGUI;
 import com.ihells.fishingloot.guis.UpgradeGUI;
+import com.ihells.fishingloot.listeners.FishingListener;
+import com.ihells.fishingloot.listeners.InventoryListener;
 import com.ihells.fishingloot.utils.LootUtil;
 import com.ihells.fishingloot.utils.UpgradeUtil;
 import com.qrakn.phoenix.lang.file.type.BasicConfigurationFile;
@@ -13,13 +15,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.UUID;
 
 public class FishingLoot extends JavaPlugin {
 
     @Getter @Setter BasicConfigurationFile mainConfig;
-    @Getter Loot loot;
+    @Getter
+    Loot loot;
     @Getter CaptchaGUI captchaGUI;
     @Getter UpgradeGUI upgradeGUI;
     @Getter LootUtil lootUtil;
@@ -28,6 +34,8 @@ public class FishingLoot extends JavaPlugin {
     @Getter public static FishingLoot instance;
     @Getter public Economy economy = null;
     @Getter public final TokenManager tokenManager = (TokenManager) Bukkit.getPluginManager().getPlugin("TokenManager");
+
+    @Getter @Setter private HashMap<UUID, BukkitTask> captchaTimer = new HashMap<>();
 
     @Override
     public void onEnable() {

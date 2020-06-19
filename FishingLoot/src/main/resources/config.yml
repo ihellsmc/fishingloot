@@ -9,6 +9,7 @@ on-purchase: "&aYou just purchased a tier {tier} upgrade for ${cost}!"
 no-permission: "&c&lHey! &cSorry, you do not have permission to do this!"
 wrong-item: "&c&lHey! &cSorry, you must be holding a fishing rod to do this!"
 no-funds: "&c&lHey! &cSorry, you have insufficient funds to do this!"
+captcha-alert: "&c&lSTAFF: &f{player} has not completed the captcha within 5 minutes!"
 
 gui:
   title: "&b&lSelect a tier to upgrade"

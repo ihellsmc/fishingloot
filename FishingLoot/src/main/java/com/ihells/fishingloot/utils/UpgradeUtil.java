@@ -1,7 +1,6 @@
 package com.ihells.fishingloot.utils;
 
 import com.ihells.fishingloot.FishingLoot;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
