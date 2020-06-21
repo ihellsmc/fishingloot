@@ -14,15 +14,12 @@ public class LootUtil {
 
     public boolean isHighValue(ItemStack item) {
 
-        Material material = item.getType();
         List<String> highValue = new ArrayList<>(mainConfig.getConfigurationSection("loot.high-value").getKeys(false));
-        List<Material> toCheck = new ArrayList<>();
-        for (String string : highValue) {
-            if (Material.getMaterial(string.toUpperCase()) != null) {
-                toCheck.add(Material.getMaterial(string.toUpperCase()));
-            }
+        List<ItemStack> toCheck = new ArrayList<>();
+        for (String toDeserialize : highValue) {
+            toCheck.add(ItemStackSerializer.deserialize(toDeserialize));
         }
-        return toCheck.contains(material);
+        return toCheck.contains(item);
 
     }
 

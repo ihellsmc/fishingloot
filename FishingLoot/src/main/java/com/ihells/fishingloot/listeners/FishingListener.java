@@ -62,7 +62,7 @@ public class FishingListener implements Listener {
 
         RandomCollection<ItemStack> randomLoot = new RandomCollection<>();
 
-        for (Map.Entry<ItemStack, Double> entrySet : loot.getLoot().entrySet()) {
+        for (Map.Entry<ItemStack, Integer> entrySet : loot.getLoot().entrySet()) {
 
             if (lootUtil.isHighValue(entrySet.getKey())) {
                 if (getLoot(player.getItemInHand()) == 1) {

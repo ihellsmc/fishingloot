@@ -44,7 +44,7 @@ public class FishingLoot extends JavaPlugin {
         registerInstances();
         Bukkit.getPluginManager().registerEvents(new FishingListener(), this);
         Bukkit.getPluginManager().registerEvents(new InventoryListener(), this);
-        getCommand("upgrade").setExecutor(new UpgradeCommand());
+        getCommand("rod").setExecutor(new UpgradeCommand());
 
         if (!setupEconomy() ) {
             getLogger().severe("NO VAULT ECONOMY FOUND!");
@@ -75,7 +75,7 @@ public class FishingLoot extends JavaPlugin {
         mainConfig = new BasicConfigurationFile(this, "config");
     }
 
-    public void reloadConfig() {
+    public void reloadConfigs() {
         try {
             mainConfig.getConfiguration().load(getMainConfig().getFile());
         } catch (IOException | InvalidConfigurationException e) {
@@ -91,7 +91,7 @@ public class FishingLoot extends JavaPlugin {
         upgradeUtil = new UpgradeUtil();
     }
 
-    public void saveConfig() {
+    public void saveConfigs() {
         try {
             getMainConfig().getConfiguration().save(getMainConfig().getFile());
         } catch (IOException ignored) {}

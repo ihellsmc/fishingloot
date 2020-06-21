@@ -1,6 +1,7 @@
 com\ihells\fishingloot\FishingLoot.class
 com\ihells\fishingloot\utils\LootUtil.class
 com\ihells\fishingloot\listeners\FishingListener.class
+com\ihells\fishingloot\utils\ItemStackSerializer.class
 com\ihells\fishingloot\UpgradeCommand.class
 com\ihells\fishingloot\guis\CaptchaGUI.class
 com\ihells\fishingloot\guis\UpgradeGUI.class

@@ -1,5 +1,6 @@
 package com.ihells.fishingloot;
 
+import com.ihells.fishingloot.utils.ItemStackSerializer;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
@@ -12,35 +13,26 @@ public class Loot {
 
     private final YamlConfiguration mainConfig = FishingLoot.getInstance().getMainConfig().getConfiguration();
 
-    public HashMap<ItemStack, Double> getLoot() {
+    public HashMap<ItemStack, Integer> getLoot() {
 
-        HashMap<ItemStack, Double> toReturn = new HashMap<>();
+        HashMap<ItemStack, Integer> toReturn = new HashMap<>();
 
         List<String> highValue = new ArrayList<>(mainConfig.getConfigurationSection("loot.high-value").getKeys(false));
         List<String> lowValue = new ArrayList<>(mainConfig.getConfigurationSection("loot.low-value").getKeys(false));
 
         for (String item : highValue) {
-            ItemStack loot;
-            if (Material.getMaterial(item.toUpperCase()) != null) {
-                loot = new ItemStack(Material.getMaterial(item.toUpperCase()));
-            } else {
-                loot = new ItemStack(Material.SPONGE);
-            }
-            double chance = Double.parseDouble(mainConfig.getString("loot.high-value."+item));
-            toReturn.put(loot, chance);
+            int chance = mainConfig.getInt("loot.high-value."+item);
+            ItemStack itemStack = ItemStackSerializer.deserialize(item);
+            toReturn.put(itemStack, chance);
         }
         for (String item : lowValue) {
-            ItemStack loot;
-            if (Material.getMaterial(item.toUpperCase()) != null) {
-                loot = new ItemStack(Material.getMaterial(item.toUpperCase()));
-            } else {
-                loot = new ItemStack(Material.SPONGE);
-            }
-            double chance = Double.parseDouble(mainConfig.getString("loot.low-value."+item));
-            toReturn.put(loot, chance);
+            int chance = mainConfig.getInt("loot.low-value."+item);
+            ItemStack itemStack = ItemStackSerializer.deserialize(item);
+            toReturn.put(itemStack, chance);
         }
 
         return toReturn;
 
     }
+
 }

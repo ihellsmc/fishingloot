@@ -3,8 +3,7 @@ name: FishingLoot
 version: 1.0
 author: "iHells#7514"
 commands:
-  upgrade:
-    aliases: [u]
+  rod:
     description: "Upgrade your current fishing rod!"
 softdepend:
   - Vault
